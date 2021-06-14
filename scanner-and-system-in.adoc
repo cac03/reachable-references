@@ -1,0 +1,88 @@
+= Почему нельзя несколько раз создавать `Scanner`, связанный с `System.in`?
+
+== Это некорректно
+
+Если говорить кратко, то это -- просто неправильно.
+Возьмём, например, следующий код:
+
+[source,java]
+----
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args){
+        System.out.println(readInt());
+        System.out.println(readInt());
+    }
+
+    private static int readInt() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
+}
+----
+
+Программа выше пытается прочитать два раза целое число из потока ввода.
+
+Если попробовать ввести два числа, разделённых пробелом:
+
+[source,text]
+----
+1 2
+----
+
+то вывод программы будет следующим:
+
+[source,text]
+----
+1
+----
+
+и она продолжит ждать ввода, хотя число _уже введено_.
+Если же ввести символ окончания ввода (для этого необходимо нажать `Ctrl` + `D`), то получим исключение:
+
+[source,text]
+----
+Exception in thread "main" java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at Main.readInt(Main.java:11)
+	at Main.main(Main.java:6)
+----
+
+Попытались прочитать `int`, но в потоке ввода уже ничего нет.
+
+== Как правильно?
+
+Чтобы программа работала корректно, `Scanner`, связанный с `System.in`, должен создаваться *один* раз и переиспользоваться.
+
+[source,java]
+----
+public class Main {
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        System.out.println(readInt());
+        System.out.println(readInt());
+    }
+
+    private static int readInt() {
+        return scanner.nextInt();
+    }
+}
+----
+
+Тогда вывод будет корректным:
+
+[source,text]
+----
+1
+2
+----
+
+== Итог
+
+* Создание нескольких ``Scanner``'ов, связанных с `System.in`, *некорректно* и может приводить к _проблемам, которые трудно обнаружить_
+* Такой `Scanner` должен создаваться один раз и переиспользоваться
