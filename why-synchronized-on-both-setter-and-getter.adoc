@@ -1,0 +1,92 @@
+= Почему `synchronized` должен быть и у сеттера, и у геттера?
+
+== Потому что так необходимо
+
+Возьмём, например, следующий код:
+
+[source,java]
+----
+public class Spinning {
+    // 1
+    private boolean active = true;
+
+    // 2
+    public boolean isActive() {
+        return active;
+    }
+
+    // 3
+    public synchronized void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        Spinning spinning = new Spinning();
+
+        // (4)
+        new Thread(() -> {
+            while (spinning.isActive()) {
+                ;
+            }
+            System.out.println("Done");
+        }).start();
+
+        // (5)
+        Thread.sleep(TimeUnit.SECONDS.toMillis(5));
+        spinning.setActive(false);
+    }
+}
+----
+
+. Класс `Spinning` содержит одно поле, `active` (1)
+. Для доступа к нему объявлены:
+.. Геттер -- (2) *без модификатора `synchronized`*
+.. Сеттер -- (3) *с* модификатором `synchronized`
+. В методе `main`:
+.. (4) -- Создается поток, который ждёт, пока _другой_ поток не поменяет значение `active` на `false`
+.. (5) -- Главный поток спит 5 секунд, а затем пытается сообщить потоку, созданному ранее, что пора бы завершить работу
+
+Главный вопрос: **есть ли гарантия того, что поток, созданный в строке (4), завершит свою работу?**
+
+Ответ -- нет, если программу запустить, то она может продолжать работать бесконечно и не напечатать `Done` никогда.
+
+== Как правильно?
+
+В данном случае необходимо ставить `synchronized` и у сеттера, и у геттера:
+
+[source,java]
+----
+public class Spinning {
+    private boolean active = true;
+    public synchronized boolean isActive() {
+
+        return active;
+    }
+
+    public synchronized void setActive(boolean active) {
+        this.active = active;
+    }
+
+    // main опущен
+}
+----
+
+Если это сделать, то программа *гарантированно* выведет `Done`.
+
+== Итог
+
+* При доступе к *изменяемому* полю из разных потоков и чтение, и запись должны быть синхронизированы
+** Самый простой способ это сделать -- объявить и геттер, и сеттер `synchronized`
+
+_Это -- не единственный способ обеспечить корректную синхронизацию_
+
+== Примечание
+
+Версия Java, на которой пример выше работает бесконечно:
+
+[source,text]
+----
+openjdk version "11.0.11" 2021-04-20
+OpenJDK Runtime Environment (build 11.0.11+9)
+OpenJDK 64-Bit Server VM (build 11.0.11+9, mixed mode)
+----

@@ -15,3 +15,4 @@ _Это -- экспериментальный проект._
 
 . link:scanner-and-system-in.adoc[Почему нельзя несколько раз создавать `Scanner`, связанный с `System.in`?]
 . link:why-no-crlf-to-create-a-new-line.adoc[Почему не нужно использовать `\r\n` в Java?]
+. link:why-synchronized-on-both-setter-and-getter.adoc[Почему `synchronized` должен быть и у сеттера, и у геттера?]
