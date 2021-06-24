@@ -24,16 +24,18 @@ public class Spinning {
         Spinning spinning = new Spinning();
 
         // (4)
-        new Thread(() -> {
+        Thread thread = new Thread(() -> {
             while (spinning.isActive()) {
                 ;
             }
             System.out.println("Done");
-        }).start();
+        });
+        thread.start();
 
         // (5)
         Thread.sleep(TimeUnit.SECONDS.toMillis(5));
         spinning.setActive(false);
+        thread.join();
     }
 }
 ----
@@ -58,8 +60,8 @@ public class Spinning {
 ----
 public class Spinning {
     private boolean active = true;
-    public synchronized boolean isActive() {
 
+    public synchronized boolean isActive() {
         return active;
     }
 
