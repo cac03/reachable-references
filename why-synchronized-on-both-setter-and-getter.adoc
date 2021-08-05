@@ -7,15 +7,14 @@
 [source,java]
 ----
 public class Spinning {
-    // 1
-    private boolean active = true;
+    private boolean active = true; // <1>
 
-    // 2
+    // <2>
     public boolean isActive() {
         return active;
     }
 
-    // 3
+    // <3>
     public synchronized void setActive(boolean active) {
         this.active = active;
     }
@@ -23,7 +22,7 @@ public class Spinning {
     public static void main(String[] args) throws InterruptedException {
         Spinning spinning = new Spinning();
 
-        // (4)
+        // <4>
         Thread thread = new Thread(() -> {
             while (spinning.isActive()) {
                 ;
@@ -32,21 +31,18 @@ public class Spinning {
         });
         thread.start();
 
-        // (5)
+        // <5>
         Thread.sleep(TimeUnit.SECONDS.toMillis(5));
         spinning.setActive(false);
         thread.join();
     }
 }
 ----
-
-. Класс `Spinning` содержит одно поле, `active` (1)
-. Для доступа к нему объявлены:
-.. Геттер -- (2) *без модификатора `synchronized`*
-.. Сеттер -- (3) *с* модификатором `synchronized`
-. В методе `main`:
-.. (4) -- Создается поток, который ждёт, пока _другой_ поток не поменяет значение `active` на `false`
-.. (5) -- Главный поток спит 5 секунд, а затем пытается сообщить потоку, созданному ранее, что пора бы завершить работу
+<1> Поле `active` показывает, должен ли поток `thread` работать.
+<2> Геттер к полю `active` без модификатора `synchronized`.
+<3> Сеттер к полю `active` *с* модификатором `synchronized`.
+<4> Поток, он ждёт, пока главный поток не поменяет значение `active` на `false`
+<5> Главный поток спит 5 секунд, а затем пытается сообщить потоку, созданному ранее, что пора бы завершить работу
 
 Главный вопрос: **есть ли гарантия того, что поток, созданный в строке (4), завершит свою работу?**
 

@@ -10,20 +10,20 @@
 [source,java]
 ----
 public class OutputTest {
-    private PrintStream originalOut; // 1
-    private final ByteArrayOutputStream out = new ByteArrayOutputStream(); // 2
-    private final PrintStream interceptingOut = new PrintStream(out); // 3
+    private PrintStream originalOut; // <1>
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream(); // <2>
+    private final PrintStream interceptingOut = new PrintStream(out); // <3>
 
     @BeforeEach
     void setUp() {
-        // 4
+        // <4>
         originalOut = System.out;
         System.setOut(interceptingOut);
     }
 
     @AfterEach
     void tearDown() {
-        // 5
+        // <5>
         System.setOut(originalOut);
     }
 
@@ -42,23 +42,19 @@ public class OutputTest {
     }
 }
 ----
+<1> Оригинальный поток вывода
+<2> `OutputStream`, он хранит всё, что было отправлено в `System.out` во время исполнения теста
+<3> `PrintStream`, он отправляет всё, что отправлено в `System.out` в поле `out`
+<4> Не забываем сохранить оригинальный `System.out`
+<5> Не забываем восстановить оригинальный `System.out`
 
-всё, что он делает -- проверяет, действительно ли в `System.out` попала строка `Hello`.
+Тест выше проверяет, действительно ли в `System.out` попала строка `Hello`.
 
 В тесте `saysHelloWorld`:
 
 . Вызывается метод `sayHello`, печатающий в консоль строку `Hello`
 . `actualOut` -- строка, отправленная в консоль, она была перехвачена через `interceptingOut`
 . `assertEquals` -- сравнивает ожидаемый результат с полученным, ожидая `\r\n` в качестве разделителя
-
-_Дополнительные пояснения:_
-
-* (1) -- поле, в котором хранится оригинальный поток вывода
-* (2) -- `OutputStream`, хранящий всё, что было отправлено в `System.out` во время исполнения теста
-* (3) -- `PrintStream`, отправляющий всё, что отправлено в `System.out` в поле `out`
-* (4) -- не забываем сохранить оригинальный `System.out`
-* (5) -- не забываем восстановить оригинальный `System.out`
-
 
 А теперь главный вопрос: **всегда ли этот тест будет проходить**?
 
