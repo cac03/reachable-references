@@ -6,6 +6,7 @@
 Возьмём, например, следующий код:
 
 [source,java]
+.`Main.java`
 ----
 import java.util.Scanner;
 
@@ -59,6 +60,7 @@ Exception in thread "main" java.util.NoSuchElementException
 Чтобы программа работала корректно, `Scanner`, связанный с `System.in`, должен создаваться *один* раз и переиспользоваться.
 
 [source,java]
+.`Main.java`
 ----
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);

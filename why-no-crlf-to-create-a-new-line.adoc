@@ -8,6 +8,7 @@
 
 
 [source,java]
+.`OutputTest.java`
 ----
 public class OutputTest {
     private PrintStream originalOut; // <1>

@@ -5,6 +5,7 @@
 Возьмём, например, следующий код:
 
 [source,java]
+.`Spinning.java`
 ----
 public class Spinning {
     private boolean active = true; // <1>
@@ -38,6 +39,7 @@ public class Spinning {
     }
 }
 ----
+
 <1> Поле `active` показывает, должен ли поток `thread` работать.
 <2> Геттер к полю `active` без модификатора `synchronized`.
 <3> Сеттер к полю `active` *с* модификатором `synchronized`.
@@ -53,6 +55,7 @@ public class Spinning {
 В данном случае необходимо ставить `synchronized` и у сеттера, и у геттера:
 
 [source,java]
+.`Spinning.java`
 ----
 public class Spinning {
     private boolean active = true;
