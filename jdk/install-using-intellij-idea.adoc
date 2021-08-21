@@ -1,0 +1,21 @@
+= Установка через Intellij IDEA
+
+Intellij IDEA позволяет установить JDK локально, в домашнюю директорию пользователя.
+Это -- один из самых простых способов установки JDK.
+
+Используйте данный способ, если Вы хотите:
+
+* Чтобы IDEA сделала всё за Вас: скачала JDK, распаковала и подключила его к проектам
+* Попробовать новую версию Java, не покидая IDE
+
+== Как это сделать
+
+Посмотрите видео на странице https://www.jetbrains.com/idea/guide/tips/download-jdk/[Download JDK]
+
+== Какую версию и вендора выбрать
+
+Если Вы только начинаете знакомиться с Java, то выберите:
+
+. 11-ю версию JDK -- это один из последних LTS-релизов
+. Вендор -- Temurin -- одну из самых популярных сборок JDK по результатам опроса https://snyk.io/jvm-ecosystem-report-2021/?utm_campaign=JVM-SC-2021&utm_medium=Report-Link#AdoptOpenJDK[JVM Ecosystem Report 2021], это -- одна из самых популярных сборок.
+Eclipse Temurin -- https://blog.adoptium.net/2021/08/adoptium-celebrates-first-release/[бывший AdoptOpenJDK]
