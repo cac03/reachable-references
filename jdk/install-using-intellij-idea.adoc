@@ -1,6 +1,6 @@
 = Установка через Intellij IDEA
 
-*Download JDK* в Intellij IDEA устанавливает JDK в домашнюю директорию пользователя.
+*Download JDK* в Intellij IDEA устанавливает JDK локально: по умолчанию -- в домашнюю директорию пользователя.
 
 Устанавливайте JDK через Intellij IDEA, если хотите:
 

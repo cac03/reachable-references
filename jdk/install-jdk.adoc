@@ -13,4 +13,4 @@ JDK (Java Development Kit) -- набор разработчика Java.
 
 Установить JDK можно:
 
-. link:install-using-intellij-idea.adoc[Через Intellij IDEA]
+. Локально link:install-using-intellij-idea.adoc[через Intellij IDEA]
