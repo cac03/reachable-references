@@ -1,37 +1,49 @@
+:icons: font
 = Intellij IDEA
 
-Intellij IDEA -- интегрированная среда разработки -- IDE (Integrated Development Environment).
-Основной поддерживаемый язык -- Java.
-В ней пишут, запускают, собирают программы, документацию.
-В общем, делают всё то, что так или иначе связано с разработкой
+Intellij IDEA -- интегрированная среда разработки -- IDE для Java.
+
+В IDE пишут программы, составляют документацию.
 
 [NOTE]
 ====
 Этот документ тоже написан в Intellij IDEA
 ====
 
-Компания JetBrains разрабатывает Intellij IDEA и другие IDE, например:
+== JetBrains
+
+Intellij IDEA разрабатывает компания JetBrains.
+Она работает и над другими IDE, например:
 
 . https://www.jetbrains.com/clion/[CLion] для C и C++
 . https://www.jetbrains.com/ruby/[RubyMine] для Ruby
 . https://www.jetbrains.com/pycharm/[PyCharm] для Python
 
-
-Среди других IDE для Java есть:
+== Другие IDE для Java
 
 . https://www.eclipse.org/ide/[Eclipse]
 . https://netbeans.apache.org/[Apache Netbeans]
 . https://code.visualstudio.com/docs/languages/java[Visual Studio Code]
 
-https://www.jetbrains.com/lp/devecosystem-2021/[Результаты опроса 2021-го года] от JetBrains -- The State of Developer Ecosystem 2021  https://www.jetbrains.com/lp/devecosystem-2021/java/#Java_which-ide-editor-do-you-use-the-most-for-java-development[показывают], что:
+== Почему IDEA
 
-. Intellij IDEA используют 75% разработчиков
-. Eclipse -- 11%
-. Netbeans -- 2%
+*Intellij IDEA популярна*: результаты опросов https://www.jetbrains.com/lp/devecosystem-2021/java/#Java_which-ide-editor-do-you-use-the-most-for-java-development[JetBrains] и https://snyk.io/jvm-ecosystem-report-2021/?utm_campaign=JVM-SC-2021&utm_medium=Report-Link#jvm-developers-use-intellij[Snyk] показывают, что 70% Java разработчиков используют Intellij IDEA
 
-Аналогичные результаты и в опросе от https://snyk.io/jvm-ecosystem-report-2021/?utm_campaign=JVM-SC-2021&utm_medium=Report-Link#jvm-developers-use-intellij[Snyk]
+== Ultimate Edition и Community Edition
 
-== Как установить
+JetBrains выпускает Intellij IDEA в двух вариантах:
+
+. *Ultimate Edition* -- _платная_ версия с расширенными возможностями, поддерживает библиотеки и фреймворки для коммерческой разработки
+. *Community Edition* -- бесплатная версия, в ней расширенных возможностей нет
+
+Полное сравнение Community Edition и Ultimate Edition -- https://www.jetbrains.com/idea/features/editions_comparison_matrix.html[здесь]
+
+[TIP]
+====
+Выбирайте Ultimate Edition, если не лень получать <<educatorial-license,образовательную лицензию>>
+====
+
+== Как установить Intellij IDEA
 
 === Windows
 
@@ -39,17 +51,15 @@ https://www.jetbrains.com/lp/devecosystem-2021/[Результаты опрос�
 
 === Mac
 
-Несколько способов:
-
-. Скачать `.dmg` с сайта https://www.jetbrains.com/idea/download/#section=mac[JetBrains] и установить
-. Через `brew`:
-.. Cask для Ultimate Edition -- https://formulae.brew.sh/cask/intellij-idea[`intellij-idea`]:
+* Скачайте `.dmg` с сайта https://www.jetbrains.com/idea/download/#section=mac[JetBrains] и установите _или_
+* Через `brew`:
+. Cask для Ultimate Edition -- https://formulae.brew.sh/cask/intellij-idea[`intellij-idea`]:
 +
 [source,bash]
 ----
 $ brew cask install intellij-idea
 ----
-.. Cask для Community Edition -- https://formulae.brew.sh/cask/intellij-idea-ce[`intellij-ide-ce`]:
+. Cask для Community Edition -- https://formulae.brew.sh/cask/intellij-idea-ce[`intellij-ide-ce`]:
 +
 [source,bash]
 ----
@@ -58,7 +68,7 @@ $ brew cask install intellij-idea-ce
 
 === Linux
 
-С Linux'ом всё немного сложнее, потому что здесь много дистрибутивов: Ubuntu, Mint, Arch и другие
+С Linux сложнее, потому что здесь много дистрибутивов: Ubuntu, Mint, Arch и другие
 
 ==== Ubuntu
 
@@ -77,7 +87,7 @@ $ sudo snap install intellij-idea-ultimate --classic
 $ sudo snap install intellij-idea-community --classic
 ----
 
-==== Arch и основанные на дистрибутивы, например Manjaro
+==== Arch и основанные на нём дистрибутивы, например, Manjaro
 
 . Ultimate Edition -- через AUR
 +
@@ -96,33 +106,10 @@ $ sudo pacman -S intellij-idea-community-edition
 
 Посмотрите в Google 🤓
 
-== Ultimate Edition и Community Edition
-
-JetBrains выпускает Intellij IDEA в двух вариантах:
-
-. *Ultimate Edition* -- _платная_ версия с расширенными возможностями.
-В ней поддерживаются библиотеки и фреймворки для коммерческой разработки
-. *Community Edition* -- бесплатная версия, в ней расширенных возможностей нет
-
-[NOTE]
-====
-Если что-то не поддерживается в Community Edition, то это не означает, что этим нельзя пользоваться.
-Просто это будет _чуть_ менее удобно
-====
-
-Полное сравнение Community Edition и Ultimate Edition -- https://www.jetbrains.com/idea/features/editions_comparison_matrix.html[здесь]
-
-[TIP]
-====
-Выбирайте Ultimate Edition, если не лень получать <<educatorial-license,образовательную лицензию>>
-====
-
 [#educatorial-license]
-== Образовательная лицензия
+== Образовательная лицензия 🎒
 
-JetBrains -- компания, занимающаяся разработкой Intellij IDEA, -- предоставляет _бесплатные_ лицензии на все свои платные продукты студентам и преподавателям.
-
-То есть, если Вы -- студент, то можно использовать Intellij IDEA Ultimate Edition бесплатно
+JetBrains предоставляет _бесплатные_ лицензии на платные продукты студентам и преподавателям.
 
 [CAUTION]
 ====
@@ -133,28 +120,28 @@ JetBrains -- компания, занимающаяся разработкой I
 
 === Как получить лицензию
 
-. Заполнить https://www.jetbrains.com/shop/eform/students[анкету]
-. Получить письмо
-. Выполнить то, что указано в письме
-. Активировать IDE
+. Заполните https://www.jetbrains.com/shop/eform/students[анкету]
+. Получите письмо
+. Следуйте инструкциям в письме
+. Активируйте IDE
 
-=== Как пользоваться
+== Как пользоваться
 
-. В руководстве https://blog.jetbrains.com/idea/2020/04/tutorial-your-first-java-application/[Your First Java Application] Trisha Gee показывает, как создать первое Java-приложение
-. Основы отладки -- в статье https://blog.jetbrains.com/idea/2020/05/debugger-basics-in-intellij-idea/[Debugger Basics in IntelliJ IDEA] от Mala Gupta
-. https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf[Intellij IDEA keymap] показывает доступные сочетания клавиш
+. Начните с руководства https://blog.jetbrains.com/idea/2020/04/tutorial-your-first-java-application/[Your First Java Application]: в нём Trisha Gee показывает, как создать первое Java-приложение
+. Основы отладки -- в статье https://blog.jetbrains.com/idea/2020/05/debugger-basics-in-intellij-idea/[Debugger Basics in IntelliJ IDEA] Mala Gupta
+. https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf[Intellij IDEA keymap] -- шпаргалка горячих клавиш
 
-=== Прочее
+== Прочее
 
-==== JetBrains и Intellij IDEA в сети
+=== JetBrains и Intellij IDEA в сети
 
 . https://twitter.com/intellijidea[@intellijidea] -- Intellij IDEA в Twitter
 . https://twitter.com/jetbrains[@jetbrains] -- JetBrains в Twitter
 . https://twitter.com/JetBrainsRu[@JetBrainsRu] -- JetBrains Россия в Twitter
 . https://www.youtube.com/user/JetBrainsTV[JetBrainsTV] -- канал на YouTube
-.. https://www.youtube.com/playlist?list=PLQ176FUIyIUbDCJXvNZ-nf0PZN22HANpp[Плейлист] про Intellij IDEA
+.. https://www.youtube.com/playlist?list=PLQ176FUIyIUbDCJXvNZ-nf0PZN22HANpp[Плейлист] об Intellij IDEA
 
-==== Видео, статьи
+=== Видео, статьи
 
 . https://www.youtube.com/watch?v=b85Y0R9UYhI[Debugger: A Hidden Gem. By Egor Ushakov (2021)]
 . https://www.youtube.com/watch?v=ZiOMQRujfMM[Victor Rentea — IntelliJ productivity tips — The secrets of the fastest developers on Earth]
