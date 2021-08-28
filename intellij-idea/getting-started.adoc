@@ -1,3 +1,10 @@
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
 :icons: font
 = Intellij IDEA
 
@@ -10,16 +17,10 @@ Intellij IDEA -- интегрированная среда разработки 
 Этот документ тоже написан в Intellij IDEA
 ====
 
-== JetBrains
-
 Intellij IDEA разрабатывает компания JetBrains.
-Она работает и над другими IDE, например:
+Она работает и над другими IDE: https://www.jetbrains.com/clion/[CLion] для C и C++, https://www.jetbrains.com/ruby/[RubyMine] для Ruby, https://www.jetbrains.com/pycharm/[PyCharm] для Python
 
-. https://www.jetbrains.com/clion/[CLion] для C и C++
-. https://www.jetbrains.com/ruby/[RubyMine] для Ruby
-. https://www.jetbrains.com/pycharm/[PyCharm] для Python
-
-== Другие IDE для Java
+== Другие Java IDE
 
 . https://www.eclipse.org/ide/[Eclipse]
 . https://netbeans.apache.org/[Apache Netbeans]
@@ -133,7 +134,7 @@ JetBrains предоставляет _бесплатные_ лицензии н�
 
 == Прочее
 
-=== JetBrains и Intellij IDEA в сети
+=== JetBrains и Intellij IDEA в сети 🐦
 
 . https://twitter.com/intellijidea[@intellijidea] -- Intellij IDEA в Twitter
 . https://twitter.com/jetbrains[@jetbrains] -- JetBrains в Twitter
@@ -143,6 +144,6 @@ JetBrains предоставляет _бесплатные_ лицензии н�
 
 === Видео, статьи
 
-. https://www.youtube.com/watch?v=b85Y0R9UYhI[Debugger: A Hidden Gem. By Egor Ushakov (2021)]
+. В докладе https://www.youtube.com/watch?v=b85Y0R9UYhI[Debugger: A Hidden Gem] Егор Ушаков рассказывает продвинутые про отладчик Intellij IDEA
 . https://www.youtube.com/watch?v=ZiOMQRujfMM[Victor Rentea — IntelliJ productivity tips — The secrets of the fastest developers on Earth]
-. https://www.youtube.com/watch?v=_rj7dx6c5R8[Антон Архипов — Эффективная работа с IDE(A)] -- 2016-й год
+.. Перевод на Хабре: https://habr.com/ru/company/jugru/blog/568124/[IntelliJ productivity tips — Секреты самых быстрых разработчиков планеты]
