@@ -39,11 +39,6 @@ JetBrains выпускает Intellij IDEA в двух вариантах:
 
 Полное сравнение Community Edition и Ultimate Edition -- https://www.jetbrains.com/idea/features/editions_comparison_matrix.html[здесь]
 
-[TIP]
-====
-Выбирайте Ultimate Edition, если не лень получать <<educatorial-license,образовательную лицензию>>
-====
-
 == Как установить Intellij IDEA
 
 === Windows
@@ -144,6 +139,6 @@ JetBrains предоставляет _бесплатные_ лицензии н�
 
 === Видео, статьи
 
-. В докладе https://www.youtube.com/watch?v=b85Y0R9UYhI[Debugger: A Hidden Gem] Егор Ушаков рассказывает продвинутые про отладчик Intellij IDEA
+. В докладе https://www.youtube.com/watch?v=b85Y0R9UYhI[Debugger: A Hidden Gem] Егор Ушаков рассказывает про отладчик Intellij IDEA
 . https://www.youtube.com/watch?v=ZiOMQRujfMM[Victor Rentea — IntelliJ productivity tips — The secrets of the fastest developers on Earth]
 .. Перевод на Хабре: https://habr.com/ru/company/jugru/blog/568124/[IntelliJ productivity tips — Секреты самых быстрых разработчиков планеты]
