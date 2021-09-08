@@ -24,9 +24,8 @@
 
 Если только знакомитесь с Java, то выберите:
 
-. *11-ю версию JDK* -- последнюю LTS-версию: она будет получать обновления несколько лет
-. *Вендор -- Temurin* (https://blog.adoptium.net/2021/08/adoptium-celebrates-first-release/[бывший AdoptOpenJDK]).
-Это -- самая популярная сборка JDK, её используют https://snyk.io/jvm-ecosystem-report-2021/#AdoptOpenJDK[44% Java-разработчиков]
+. 16-ю версию JDK
+. Вендор -- Oracle OpenJDK
 
 == См. также
 
