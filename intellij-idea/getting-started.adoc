@@ -43,7 +43,7 @@ JetBrains выпускает Intellij IDEA в двух вариантах:
 
 === Windows
 
-Скачать `.exe` со страницы https://www.jetbrains.com/idea/download/#section=windows[Intellij IDEA], установить
+Скачайте и установите `.exe` со страницы https://www.jetbrains.com/idea/download/#section=windows[Intellij IDEA]
 
 === Mac
 
