@@ -59,13 +59,7 @@
 [#oracle-jdk]
 === Oracle JDK
 
-https://www.oracle.com/java/technologies/javase-jdk11-downloads.html[Oracle JDK] -- скачать, установить
-
-* Требуется регистрация
-* Бесплатна для разработки и персонального использования.
-См. также:
-** https://www.oracle.com/java/technologies/javase/jdk-faqs.html[Oracle Java SE Licensing FAQ]
-** https://habr.com/ru/post/448632/[Java теперь платная? Развенчиваем слухи (или нет?)]
+https://www.oracle.com/java/technologies/downloads/[JDK от Oracle] -- скачать, установить
 
 [#openjdk-builds]
 === Сборки OpenJDK
