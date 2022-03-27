@@ -1,0 +1,46 @@
+:experimental:
+
+= Tmux
+
+Tmux -- terminal multiplexer.
+
+== Определения
+
+* Session
+* Window
+* Pane
+
+== Шпаргалка
+
+Prefix -- сочетание клавиш для управления tmux'ом.
+По умолчанию -- kbd:[Ctrl + B]
+
+* kbd:[prefix + c] -- new pane
+* kbd:[prefix + z] -- zoom
+* kbd:[prefix + q] -- show window numbers
+* kbd:[prefix :neww] -- new window for long running application
+* kbd:[prefix + &] -- kill window
+* kbd:[prefix + x] -- kill panel
+* kbd:[prefix +{], kbd:[prefix + }] -- swap panel
+* kbd:[prefix + whitespace] -- lay panels out
+* kbd:[prefix + s], kbd:[prefix + w] -- tree mode
+* kbd:[prefix + Alt + Arrows] -- resize
+
+=== Режим копирования
+
+* kbd:[prefix + [] -- copy mode
+* kbd:[prefix [] Space -- select, Ctrl W, Enter -- copy
+* kbd:[prefix + \]] -- paste
+
+=== Переименовать
+
+* kbd:[prefix ,] -- rename window
+* kbd:[prefix $] -- rename session
+
+=== Прочее
+
+* `$ tmux send-keys -t 3 command` -- send command to pane
+
+== Ссылки
+
+* https://www.youtube.com/watch?v=alqoL8cSADY[Основы tmux. Часть 1. Natasha Samoylenko]
