@@ -1,0 +1,151 @@
+= Generic'и в Kotlin
+
+* Generic'и в Kotlin схожи с Generic'ами в Java
+
+== Declaration-site variance
+
+В Java нельзя написать такой код:
+
+[source,java]
+----
+public class Source<T> {
+    private T value;
+    public T getValue() {
+        // ...
+    }
+}
+
+public static void main(String[] args) {
+    Source<String> stringSource = new Source<>();
+    Source<Object> objectSource = stringSource;
+}
+----
+
+хотя, ничего страшного не произойдёт, если мы не поменяем значение `value`: со `String` на `Integer`, например.
+
+В Kotlin такое можно сделать, если спользовать Declaration-site variance.
+
+Для этого используют ключевые слова: `in` и `out`.
+
+Рассмотрим пока `out`. Пример:
+
+[source,kotlin]
+----
+class Source<out T> {
+
+    fun getValue(): T {
+        // ...
+    }
+}
+
+fun main() {
+    val stringSource = Source("abc")
+    val anySource = stringSource // <1>
+}
+----
+<1> Всё ок
+
+
+=== `in`
+
+Аналогично для `in`: когда мы хотим установить что-то, а generic тип мы хотим шире -- `String` вместо `CharSequence`, например.
+
+На Java нельзя:
+
+[source,java]
+----
+public class Sink<T> {
+    T value;
+
+    public void setValue(T t) {
+        value = t;
+    }
+}
+
+
+public static void main(String[] args) {
+    Sink<CharSequence> charSequenceSink = new Sink<>();
+    Sink<String> stringSink = charSequenceSink; // нельзя
+}
+----
+
+В Kotlin можно, используем `in`:
+
+[source,kotlin]
+----
+class Sink<in T> {
+
+    fun setValue(t: T) {
+        // ...
+    }
+}
+
+fun main() {
+    val anySink: Sink<Any> = Sink()
+    val stringSink: Sink<String> = anySink
+}
+----
+
+== `@UnsafeVariance`
+
+. `in` запрещает generic-параметру находиться в возвращаемых типах значения
+. `out` -- в параметрах функций
+. `@UnsafeVariance` подавляет эти ошибки
+
+Пример -- `Collection::contains` в Kotlin:
+
+[source,kotlin]
+----
+public interface Collection<out E> : Iterable<E> {
+    public operator fun contains(element: @UnsafeVariance E): Boolean
+}
+----
+
+Без `@UnsafeVariance` была бы ошибка компиляции.
+Если мы поставим аннотацию у параметра, то мы говорим компилятору «Всё будет безопасно: я не подменю тип у данного экземпляра на тот, что придёт снаружи»
+
+== Зачем
+
+Для упрощения
+
+Пример
+
+. Работаем мы с тем же классом `Source`:
++
+.Source.java
+[source,java]
+----
+class Source<T> {
+    T value;
+
+    public T getValue() {
+        return value;
+    }
+}
+----
+. Есть метод:
++
+[source,java]
+----
+public void printValue(Source<Object> source) {
+    System.out.println(source.getValue());
+}
+----
+. Хотим вызвать метод так:
++
+[source,java]
+----
+Source<String> stringSource = new Source<>("abc");
+
+printValue(stringSource);
+----
+. Компилятор выдаст ошибку
+. Починить в Java можно так:
++
+[source,java]
+----
+public void printValue(Source<? extends Object> source) {
+    System.out.println(source.getValue());
+}
+----
+. Так неудобно, в Kotlin проще: мы объявляем вариативность в классе, а не в месте использования
