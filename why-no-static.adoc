@@ -1,0 +1,71 @@
+= Статические методы и поля
+
+Мешают читать код, ломают программы в неожиданных местах, ставят крест на расширяемости и тестах.
+
+Вот что делают статические методы сайд-эффектами и изменяемые статические поля.
+
+== Статическое изменяемое поле
+
+[source,java]
+----
+public class Server {
+    public static int port;
+    public static ServerSocket socket;
+    public static List<Socket> openConnections;
+}
+----
+
+Приходит заказчик и говорит:
+
+> Надо сделать так,  чтобы в одной программе можно было запускать несколько серверов. Один -- всегда на 8080, а второй -- на порту из конфига.
+
+Сказано -- сделано:
+
+[source,java]
+----
+
+public class Server {
+    public static int port;
+    public static ServerSocket socket;
+    public static List<Socket> openConnections;
+
+    public static int port2;
+    public static ServerSocket socket2;
+    public static List<Socket> openConnections2;
+}
+----
+
+=== Когда можно?
+
+. Поле -- константа ✅
++
+[source,java]
+----
+public class Server {
+    private static final int DEFAULT_PORT = 8080;
+}
+----
+. Неизменяемая коллекция неизменяемых объектов ✅
++
+[source,java]
+----
+public class Server {
+    private static final Set<HttpMethod> HTTP_METHODS = Set.of(
+            GET,
+            POST,
+            HEAD,
+            TRACE
+            // ...
+    );
+}
+----
++
+. Другой неизменяемый объект ✅
++
+[source,java]
+----
+public class HttpHeaders {
+    private static final HttpHeaders EMPTY = new HttpHeaders();
+}
+----
+
